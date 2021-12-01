@@ -1,7 +1,14 @@
-import Header from "./Header";
+import Header from "./components/Header";
+import ItemListContainer from "./components/ItemListContainer";
+
+const saludo = "Bienvenido"
 
 const App = () => { 
-  return <Header/>
+  return ( <>
+    <Header/>
+    <ItemListContainer saludo={saludo} />
+</>
+  )
 }
 
 export default App;
