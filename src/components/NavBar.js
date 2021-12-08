@@ -7,7 +7,7 @@ const NavBar = () => {
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
-                    <div className="collapse navbar-collapse d-block" id="navbarNavAltMarkup">
+                    <div className="collapse navbar-collapse d-block justify-content-left" id="navbarNavAltMarkup">
                         <div className="navbar-nav">
                             <a className="nav-link active" href="./index.html">Inicio <span className="sr-only">(current)</span></a>
                             <a className="nav-link" href="./index.html">Productos</a>
@@ -16,8 +16,6 @@ const NavBar = () => {
                         </div>  
                     </div>
                 </nav>
-               
-                
       )}
 
 export default NavBar;
