@@ -1,5 +1,5 @@
-import Items from "./items"
-import { useState } from "react"
+import ItemList from "./ItemList"
+import { useEffect, useState } from "react"
 
 
 const Data = () => [
@@ -9,61 +9,32 @@ const Data = () => [
     { nombre: "producto 4", id:"4", descripcion: "producto 4"}
 ]
 
-
-
 const ItemListContainer = ({saludo}) => {
+
     
     const [ListItem, setListItem] = useState ([])
 
-
-    const product = (task) => {
-        return new Promise ((resolve, reject) =>{
-            setTimeout(()=>{
-                if (task.length > 0){
-                    resolve(setListItem(task))
-                    console.log("salio bien");
-                    
-                }else{
-                    reject("Error 404")
-                    console.log("salio mal");
-                }
+    useEffect(() => {
+        const promesa = new Promise((res) =>{
+            setTimeout(() => {
+                res(Data)
             }, 2000)
         })
-
-    }
-
-    product (Data)
-        .then(()=>product(Data))
-        .catch("Error")
-
+        promesa
+            .then((resultado) => {
+                setListItem(resultado)
+            })
+        }, [ListItem]);
 
         return(
-              <>
+            <>
                 <h2 className="text-center">{saludo}</h2>
                 <div className="row p-3 justify-content-around bg-danger">   
-                <Items/>
-                {ListItem.map( ind => 
-                    <card
-                        id={ind.id}
-                        nombre={ind.nombre}
-                        descripcion={ind.descripcion}
-                    />)}
+                <ItemList productos={ListItem}/>
                 </div>
-        </>
+            </>
         )
 }
-
-                
-
-
-
-
-
-
-
-
-
-
 
 
 
