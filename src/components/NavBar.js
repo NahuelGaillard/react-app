@@ -1,4 +1,5 @@
 import CartWidget from "./CartWidget"
+import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
     
@@ -9,9 +10,8 @@ const NavBar = () => {
                     </button>
                     <div className="collapse navbar-collapse d-block justify-content-left" id="navbarNavAltMarkup">
                         <div className="navbar-nav">
-                            <a className="nav-link active" href="./index.html">Inicio <span className="sr-only">(current)</span></a>
-                            <a className="nav-link" href="./index.html">Productos</a>
-                            <a className="nav-link" href="./index.html">Nosotros</a>
+                            <NavLink className="nav-Link active" to="/">Inicio <span className="sr-only">(current)</span></NavLink>
+                            <NavLink className="nav-Link" to="./categoria/1">Productos</NavLink>
                             <CartWidget/>
                         </div>  
                     </div>

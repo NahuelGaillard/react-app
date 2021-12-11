@@ -30,9 +30,9 @@ const stockDisponible = 8
     return (
         <>
             <div className="d-flex justify-content-between border border-dark">
-                <button onClick={aumentarContador}>+</button>
-                <p>Cantidad: {contador}</p>
                 <button onClick={reducirContador}>-</button>
+                <p>Cantidad: {contador}</p>
+                <button onClick={aumentarContador}>+</button>
             </div>    
         </>
     )
