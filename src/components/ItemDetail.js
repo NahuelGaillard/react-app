@@ -1,6 +1,12 @@
 import ItemCount from "./ItemCount"
 
 const ItemDetails = (props) => {
+
+const padre = (params) => {
+    console.log("Soy el padre");
+    console.log("params:", params);
+}
+
     return (
         <>
             <div className="card col-4 m-auto">
@@ -9,7 +15,7 @@ const ItemDetails = (props) => {
                 <p> Precio: ${props.precio}</p>
                 <hr></hr>
                 <p>Descripcion: {props.descripcion}</p>
-                <ItemCount/>
+                <ItemCount onEvent={padre}/>
             </div>
         </>
     )

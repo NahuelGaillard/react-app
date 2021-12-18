@@ -1,13 +1,13 @@
 import { useState } from "react"
 
 
-const ItemCount = () => {
+const ItemCount = (onEvent) => {
+    const hijo = () =>{
+        console.log(onEvent)
+    }
     
 const [contador, setContador] = useState(0)
 const stockDisponible = 8
-
-
-
 
     const aumentarContador = () => {
         if (contador === stockDisponible) {
@@ -16,8 +16,6 @@ const stockDisponible = 8
             setContador(contador + 1)
         }
     }
-    
-
 
     const reducirContador = () => {
         if (contador === 0) {
@@ -33,7 +31,8 @@ const stockDisponible = 8
                 <button onClick={reducirContador}>-</button>
                 <p>Cantidad: {contador}</p>
                 <button onClick={aumentarContador}>+</button>
-            </div>    
+            </div>
+            <button onClick={hijo}>Agregar</button>
         </>
     )
 }
