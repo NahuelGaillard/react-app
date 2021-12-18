@@ -3,8 +3,7 @@ import ItemCount from "./ItemCount"
 const ItemDetails = (props) => {
 
 const padre = (params) => {
-    console.log("Soy el padre");
-    console.log("params:", params);
+    console.log(params);
 }
 
     return (
