@@ -1,28 +1,36 @@
 import ItemList from "./ItemList"
 import { useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
+import { Data } from "./Data"
 
-const Data = () => [
-    { nombre: "producto 1", id:"1", descripcion: "producto 1", precio: 1500},
-    { nombre: "producto 2", id:"2", descripcion: "producto 2", precio: 1300},
-    { nombre: "producto 3", id:"3", descripcion: "producto 3", precio: 1800},
-    { nombre: "producto 4", id:"4", descripcion: "producto 4", precio: 1100}
-]
+// import { db } from "./Firebase/firebase"
+// import { collection, getDocs, } from "firebase/firestore"
+
+
 
 const ItemListContainer = ({saludo}) => {
+    
 
     const [ListItem, setListItem] = useState ([])
+    const {id} = useParams()
 
     useEffect(() => {
         const promesa = new Promise((res) =>{
             setTimeout(() => {
-                res(Data)
+                if (id === undefined) {
+                    res(Data)
+                }else{
+                    const productos = Data.filter((prod)=> prod.categoria === id)
+                    res(productos)
+                }
+                
             }, 2000)
         })
         promesa
             .then((resultado) => {
                 setListItem(resultado)
             })
-        }, [ListItem]);
+        }, [id]);
 
         return(
             <>
@@ -37,3 +45,38 @@ const ItemListContainer = ({saludo}) => {
 
 
 export default ItemListContainer;
+
+
+
+
+
+
+
+
+
+
+
+
+// useEffect(()=>{
+
+//     const productos = collection(db, "productos")
+
+//     const promesa = getDocs(productos)
+
+
+//     promesa
+//     .then((resultado) => {
+//         const productosFormateados = []
+//         resultado.forEach(doc=>{
+//             productosFormateados.push(doc.data())
+//         })
+//         console.log(productosFormateados);
+
+// })
+// .catch(()=>{
+//     console.log("error");
+
+// })
+
+
+// })
