@@ -8,7 +8,7 @@ const Items = ({producto}) => {
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpue_kSPskwcncXROttpQ3McfClYJNTOjgfw&usqp=CAU" className="card-img-top" alt="..."/>
                 <div className="card-body text-center">
                     <p className="card-text ">{producto.descripcion}</p>
-                    <button className="w-100 mt-2" onClick="">Agregar</button>
+                    {/* <button className="w-100 mt-2" onClick="">Agregar</button> */}
                     <Link className="nav-Link" to={`../item/${producto.id}`}>Ver Más</Link>
                 </div>
             </div>

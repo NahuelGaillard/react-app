@@ -14,7 +14,7 @@ const ItemDetailContainer = () => {
     useEffect(() => {
         const promesa = new Promise((res) =>{
             setTimeout(() => {
-            const productoFiltrados = Data.filter((prod) => prod.id.toString === id )
+            const productoFiltrados = Data.filter((prod) => prod.id === Number(id) )
                 res(productoFiltrados)
             }, 2000)
         })
@@ -23,11 +23,10 @@ const ItemDetailContainer = () => {
                 setListItem(resultado)
             })
         }, [id]);
-
     return (
         <>
-            <h2 className="text-center m-5">Productos</h2>
-            <ItemDetails productos={ListItem} />
+            <h2 className="text-center m-5">{ListItem.id}</h2>
+            <ItemDetails productos={ListItem}/>
         </>
     )
 }
