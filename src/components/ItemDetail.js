@@ -1,9 +1,14 @@
 import ItemCount from "./ItemCount"
+import { context } from "./CardContext";
 
 const ItemDetails = ({productos}) => {
-const padre = (params) => {
+const contador = (params) => {
     console.log(params);
 }
+const agregarProducto = () => {
+  console.log(context);
+}
+
 
  return (
      <>
@@ -15,21 +20,14 @@ const padre = (params) => {
                 <p> Precio: ${producto.precio}</p>
                 <hr></hr>
                 <p>Descripcion: {producto.descripcion}</p>
-                <button onClick={console.log(padre)}>Comprar</button>
-                <ItemCount onEvent={padre}/>
+                <button onClick={agregarProducto} >Comprar</button>
+                <ItemCount onEvent={contador}/>
             </div>
           )
     
-})}
-</>
+        })}
+    </>
 )
-
-
-    // return (
-    //     <>
-            
-    //     </>
-    // )
 }
 
 export default ItemDetails

@@ -1,7 +1,7 @@
 import { createContext } from "react";
 import { useState } from "react";
 
-export const context = createContext({nombre: "hola"})
+export const context = createContext([])
 
 
 const {Provider} = createContext()
