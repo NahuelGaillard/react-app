@@ -3,8 +3,8 @@ import { NavLink } from "react-router-dom"
 import { context } from "./CardContext"
 const CartWidget = () => {
 
-    const resultado = useContext(context)
-    console.log(resultado);
+    const {cantidad} = useContext(context)
+    console.log(cantidad);
 
     return (
         <>

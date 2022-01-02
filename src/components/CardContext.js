@@ -6,12 +6,17 @@ export const context = createContext([])
 
 const {Provider} = createContext()
 
-const CustonProvider = ({children}) => {
+const CustomProvider = ({children}) => {
 
         const [carrito, setCarrito] = useState([])
         const [cantidad, setCantidad]= useState(0)
 
         const agregarProducto = (producto, cantidad) => {
+            if(true){
+
+            }else{
+                
+            }
 
         }
         const eliminarProducto = (id) => {
@@ -28,9 +33,7 @@ const CustonProvider = ({children}) => {
         }
 
 
-        const valorContexto = { carrito, cantidad,agregarProducto, eliminarProducto, vaciarCarrito, inInCart}
-
-        
+        const valorContexto = { carrito, cantidad, agregarProducto, eliminarProducto, vaciarCarrito, inInCart}
 
     return(
         <Provider value={valorContexto}>
@@ -39,4 +42,4 @@ const CustonProvider = ({children}) => {
     )
 }
 
-export default CustonProvider
+export default CustomProvider

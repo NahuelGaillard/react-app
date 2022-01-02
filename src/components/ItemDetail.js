@@ -1,14 +1,14 @@
 import ItemCount from "./ItemCount"
 import { context } from "./CardContext";
+import { useContext } from "react";
 
 const ItemDetails = ({productos}) => {
 const contador = (params) => {
-    console.log(params);
+    // console.log(params);
 }
-const agregarProducto = () => {
-  console.log(context);
-}
-
+ 
+// const resultado = useContext(context)
+// console.log(resultado);
 
  return (
      <>
@@ -20,7 +20,7 @@ const agregarProducto = () => {
                 <p> Precio: ${producto.precio}</p>
                 <hr></hr>
                 <p>Descripcion: {producto.descripcion}</p>
-                <button onClick={agregarProducto} >Comprar</button>
+                {/* <button onClick={() =>{resultado.agregarCarrito({nombre: producto.nombre})} } >Comprar</button> */}
                 <ItemCount onEvent={contador}/>
             </div>
           )

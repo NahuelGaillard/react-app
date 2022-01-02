@@ -3,9 +3,8 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { Data } from "./Data"
 
-// import { db } from "./Firebase/firebase"
-// import { collection, getDocs, } from "firebase/firestore"
-
+import { db } from "./Firebase/firebase"
+import { collection, getDocs, query } from "firebase/firestore"
 
 
 const ItemListContainer = ({saludo}) => {
@@ -15,6 +14,25 @@ const ItemListContainer = ({saludo}) => {
     const {id} = useParams()
 
     useEffect(() => {
+
+
+        // const productos = collection(db,"Productos")
+        // const promesa = getDocs(productos)
+        
+        
+            // promesa
+            // .then ((resultado)=>{
+            //     console.log(resultado)
+            //     console.log(resultado.doc)
+
+            //     resultado.forEach(doc=>{
+            //         console.log(doc.data())
+            //     })
+            // })
+         
+
+
+
         const promesa = new Promise((res) =>{
             setTimeout(() => {
                 if (id === undefined) {

@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import CustonProvider from "./components/CardContext";
+import CustomProvider from "./components/CardContext";
 
 import CartWidget from "./components/CartWidget";
 import Header from "./components/Header";
@@ -14,7 +14,7 @@ const saludo = "Bienvenido"
 const App = () => { 
   return ( 
             <BrowserRouter>
-              <CustonProvider>
+              <CustomProvider>
                 <Header/>
                 <Routes>
                   <Route path="/" element={<ItemListContainer saludo={saludo} />}/>
@@ -22,8 +22,7 @@ const App = () => {
                   <Route path="/item/:id" element={<ItemDetailContainer/>}/>
                   <Route path="/cart" element={<CartWidget/>}/>
                 </Routes>
-              </CustonProvider>
-              
+              </CustomProvider>
             </BrowserRouter>  
   )
 }
