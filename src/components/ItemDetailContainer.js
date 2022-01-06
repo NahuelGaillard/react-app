@@ -16,7 +16,7 @@ const ItemDetailContainer = () => {
             setTimeout(() => {
             const productoFiltrados = Data.filter((prod) => prod.id === Number(id) )
                 res(productoFiltrados)
-            }, 2000)
+            }, 1)
         })
         promesa
             .then((resultado) => {
@@ -25,8 +25,7 @@ const ItemDetailContainer = () => {
         }, [id]);
     return (
         <>
-            <h2 className="text-center m-5">{ListItem.id}</h2>
-            <ItemDetails productos={ListItem}/>
+            {ListItem.length > 0  ? <ItemDetails producto={ListItem[0]}/> : <p>Cargando...</p> }
         </>
     )
 }

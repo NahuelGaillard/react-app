@@ -1,26 +1,22 @@
 import { useState } from "react"
 
 
-const ItemCount = ({onEvent}) => {
+const ItemCount = ({onEvent, cantidad, inicial}) => {
  
     
-const [contador, setContador] = useState(0)
-const stockDisponible = 8
+const [contador, setContador] = useState(inicial)
 
     const aumentarContador = () => {
-        if (contador === stockDisponible) {
-        }
-        else {
+        if (contador < cantidad) {
             setContador(contador + 1)
         }
     }
 
     const reducirContador = () => {
-        if (contador === 0) {
-        }
-        else {
+        if (contador > inicial) {
             setContador(contador - 1)
         }
+  
     }
 
     return (

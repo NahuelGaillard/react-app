@@ -3,30 +3,47 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { Data } from "./Data"
 
-import { db } from "./Firebase/firebase"
-import { collection, getDocs, query } from "firebase/firestore"
+// import { db } from "./Firebase/firebase"
+// import { collection, doc, getDocs,  } from "firebase/firestore"
 
 
 const ItemListContainer = ({saludo}) => {
-    
+
 
     const [ListItem, setListItem] = useState ([])
     const {id} = useParams()
+
+    // useEffect(() =>{
+    //     const itemsCollection = collection(db, "productos");
+    //     getDocs(itemsCollection).then ((res) => {
+    //         if (res.size === 0) {
+    //             console.log("no resultados");
+    //         }
+    //         setListItem(res.docs.map((doc) => ({ id: doc.id, ...doc.data() })))
+    //     })
+    // })
+
 
     useEffect(() => {
 
 
         // const productos = collection(db,"Productos")
         // const promesa = getDocs(productos)
-        
-        
+
+            // setTimeout(()=> {
+            //     if (id === undefined) {
+            //         res(productos)
+                    
+            //     // }else{
+            //     //     const productos = productos.filter((prod) => prod.categoria === id)
+            //     //     res(productos)
+            //     // }, 2000)
+            // })
             // promesa
             // .then ((resultado)=>{
-            //     console.log(resultado)
-            //     console.log(resultado.doc)
-
             //     resultado.forEach(doc=>{
-            //         console.log(doc.data())
+            //         setListItem(doc.data())
+            //         console.log(ListItem);
             //     })
             // })
          
@@ -42,7 +59,7 @@ const ItemListContainer = ({saludo}) => {
                     res(productos)
                 }
                 
-            }, 2000)
+            }, 2)
         })
         promesa
             .then((resultado) => {

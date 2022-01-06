@@ -1,10 +1,6 @@
-import { useContext } from "react"
 import { NavLink } from "react-router-dom"
-import { context } from "./CardContext"
 const CartWidget = () => {
 
-    const {cantidad} = useContext(context)
-    console.log(cantidad);
 
     return (
         <>

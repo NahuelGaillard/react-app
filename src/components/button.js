@@ -1,7 +1,13 @@
-const btn = document.querySelector('button')
+import { Link } from "react-router-dom";
 
-const hacerClick = (e) => {
-    console.log(e);
+const Botones = () =>{
+    return(
+        <>
+            <Link to="/">Seguir Comprando</Link>
+            <Link to="/cart">Ver Carrito</Link>
+        </>
+
+    )
 }
-
-btn.addEventListener("click", hacerClick)
+ 
+export default Botones
