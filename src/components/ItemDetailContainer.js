@@ -1,31 +1,35 @@
 import ItemDetails from "./ItemDetail"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { Data } from "./Data"
-
-
+import { db } from "./Firebase/firebase"
+import { collection, getDoc, doc } from "firebase/firestore"
 
 
 const ItemDetailContainer = () => {
 
-    const {id} = useParams()
     const [ListItem, setListItem] = useState ([])
+    const {id} = useParams()
+
+    const getItem = async () => {
+        const productosCollection = collection(db, "Productos")
+        const referencia = doc(productosCollection, id)
+        const documento = await getDoc(referencia)
+        setListItem({ ...documento.data()})
+}
+
 
     useEffect(() => {
-        const promesa = new Promise((res) =>{
-            setTimeout(() => {
-            const productoFiltrados = Data.filter((prod) => prod.id === Number(id) )
-                res(productoFiltrados)
-            }, 1)
-        })
-        promesa
-            .then((resultado) => {
-                setListItem(resultado)
-            })
-        }, [id]);
+       setTimeout(() => {
+        getItem()
+           
+       }, 200);
+    }, []);
+
     return (
         <>
-            {ListItem.length > 0  ? <ItemDetails producto={ListItem[0]}/> : <p>Cargando...</p> }
+            {ListItem.length < 0  ? <ItemDetails producto={ListItem}/> : <p>Cargando...</p> }
+            <ItemDetails producto={ListItem}/>
+
         </>
     )
 }

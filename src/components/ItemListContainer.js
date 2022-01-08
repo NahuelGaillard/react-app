@@ -1,10 +1,8 @@
 import ItemList from "./ItemList"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { Data } from "./Data"
-
-// import { db } from "./Firebase/firebase"
-// import { collection, doc, getDocs,  } from "firebase/firestore"
+import { db } from "./Firebase/firebase"
+import { collection, getDocs, query, where } from "firebase/firestore"
 
 
 const ItemListContainer = ({saludo}) => {
@@ -13,61 +11,45 @@ const ItemListContainer = ({saludo}) => {
     const [ListItem, setListItem] = useState ([])
     const {id} = useParams()
 
-    // useEffect(() =>{
-    //     const itemsCollection = collection(db, "productos");
-    //     getDocs(itemsCollection).then ((res) => {
-    //         if (res.size === 0) {
-    //             console.log("no resultados");
-    //         }
-    //         setListItem(res.docs.map((doc) => ({ id: doc.id, ...doc.data() })))
-    //     })
-    // })
+const formatearYSetear = (arrayDeDocumentos => {
+    setListItem(arrayDeDocumentos.map(documento =>{
+        return{...documento.data(), id:documento.id}
+    } ))
+})
+
+
+
+    const traerProductos = async () =>  {
+        const productosCollection = collection(db,"Productos")
+        const consulta = await getDocs(productosCollection)
+
+        formatearYSetear(consulta.docs)
+
+    }
+
+    const productosFiltrados = async () => {
+        const productosCollection = collection(db,"Productos")
+        const limitacion = where("Categoria", "==", id)
+        const miQuery = query(productosCollection, limitacion) 
+        const consulta = await getDocs(miQuery)
+
+        formatearYSetear(consulta.docs)
+
+    }
 
 
     useEffect(() => {
-
-
-        // const productos = collection(db,"Productos")
-        // const promesa = getDocs(productos)
-
-            // setTimeout(()=> {
-            //     if (id === undefined) {
-            //         res(productos)
-                    
-            //     // }else{
-            //     //     const productos = productos.filter((prod) => prod.categoria === id)
-            //     //     res(productos)
-            //     // }, 2000)
-            // })
-            // promesa
-            // .then ((resultado)=>{
-            //     resultado.forEach(doc=>{
-            //         setListItem(doc.data())
-            //         console.log(ListItem);
-            //     })
-            // })
-         
-
-
-
-        const promesa = new Promise((res) =>{
-            setTimeout(() => {
-                if (id === undefined) {
-                    res(Data)
-                }else{
-                    const productos = Data.filter((prod)=> prod.categoria === id)
-                    res(productos)
-                }
+        setTimeout(() => {
+            if (id) {
+                productosFiltrados()
                 
-            }, 2)
-        })
-        promesa
-            .then((resultado) => {
-                setListItem(resultado)
-            })
-        }, [id]);
+            }else {
 
-
+                traerProductos()
+        }
+    }, 200)
+    
+    }, [id]);
         return(
             <>
                 <h2 className="text-center m-5">{saludo}</h2>

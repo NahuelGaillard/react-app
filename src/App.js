@@ -1,7 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import CustomProvider from "./components/CardContext";
 import Cart from "./components/Cart";
-
 import Header from "./components/Header";
 import ItemDetailContainer from "./components/ItemDetailContainer";
 import ItemListContainer from "./components/ItemListContainer";
@@ -12,6 +11,8 @@ const saludo = "Bienvenido"
 
 
 const App = () => { 
+
+
   return ( 
             <BrowserRouter>
               <CustomProvider>

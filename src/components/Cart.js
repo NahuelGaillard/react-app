@@ -4,34 +4,26 @@ import { useContext } from "react";
 import { Link } from 'react-router-dom';
 
 
-
-
-
-
-
-
 const Cart = () => {
-
 
 
     const {carrito} = useContext(context)
     const {eliminarProducto} = useContext(context)
-    console.log(carrito);
-    const precioTotal = carrito.reduce((acc, prod) => acc += prod.precio * prod.cantidad, 0)
+    const precioTotal = carrito.reduce((acc, prod) => acc += prod.Valor * prod.cantidad, 0)
 
     return (
         <div className="containerModal">
             <div className="modalCarrito">
             <h3>Carrito</h3>
-            <button id="carritoCerrar"><i className="fas fa-times-circle"></i></button>
+            <Link to="./" id="carritoCerrar"><i className="fas fa-times-circle"></i></Link>
 
             {carrito.length > 0 ? <div>{carrito.map((ItemCarrito) =>{
                     
                     return (
                       <>
                         <div key={ItemCarrito.id} className='productoEnCarrito'>
-                            <p>{ItemCarrito.nombre}</p>
-                            <p>Precio: ${ItemCarrito.precio}</p>
+                            <p>{ItemCarrito.Nombre}</p>
+                            <p>Precio: ${ItemCarrito.Valor}</p>
                             <p>Cantidad: {ItemCarrito.cantidad}</p>
                             <button onClick={() => eliminarProducto(ItemCarrito.id)} className="botonEliminar"><i className="fas fa-trash"></i></button>
                         </div>  
