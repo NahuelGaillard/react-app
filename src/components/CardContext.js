@@ -1,6 +1,4 @@
 import { createContext, useState } from "react";
-// import { db } from "./Firebase/firebase";
-// import { addDoc, collection } from "firebase/firestore";
 
 
 
@@ -13,27 +11,7 @@ const CustomProvider = ({children}) => {
 
         const [carrito, setCarrito] = useState([])
         const [cantidad, setCantidad]= useState(0)
-
-
-
-        // const[loading, setLoading] = useState(false)
-        // const [id, setId] = useState("")
-
-        // const guardarCompra = async () => {
-
-        //     setLoading(true)
-        //     const orden = {
-        //     productos: [{id:1, nombre:"dije"}],
-        //     usuario: {nombre:"juan", telefono: "1245132154"},
-        //     total:100
-        //     }
-
-        //     const collectionOrden = collection(db, "ordenes")
-        //     const referencia = await addDoc(collectionOrden,orden)
-        //     const id = referencia.id
-        //     setLoading(false)
-        //     setId(id)
-        // }
+     
 
         const agregarProducto = (producto, cantidad) => {
            const enCarrito = isInCart(producto.id)
@@ -72,14 +50,10 @@ const CustomProvider = ({children}) => {
 
         }
         const isInCart = (id) => {
-        
            return carrito.some((i) => i.id === id) 
-            
         }
         
         const valorContexto = { carrito, cantidad, agregarProducto, eliminarProducto, vaciarCarrito}
-        
-
 
     return(
         <Provider value={valorContexto}>

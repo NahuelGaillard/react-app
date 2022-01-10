@@ -63,38 +63,3 @@ const formatearYSetear = (arrayDeDocumentos => {
 
 
 export default ItemListContainer;
-
-
-
-
-
-
-
-
-
-
-
-
-// useEffect(()=>{
-
-//     const productos = collection(db, "productos")
-
-//     const promesa = getDocs(productos)
-
-
-//     promesa
-//     .then((resultado) => {
-//         const productosFormateados = []
-//         resultado.forEach(doc=>{
-//             productosFormateados.push(doc.data())
-//         })
-//         console.log(productosFormateados);
-
-// })
-// .catch(()=>{
-//     console.log("error");
-
-// })
-
-
-// })

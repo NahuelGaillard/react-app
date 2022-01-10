@@ -14,7 +14,7 @@ const ItemDetailContainer = () => {
         const productosCollection = collection(db, "Productos")
         const referencia = doc(productosCollection, id)
         const documento = await getDoc(referencia)
-        setListItem({ ...documento.data()})
+        setListItem({ ...documento.data(), id: documento.id})
 }
 
 
@@ -28,7 +28,10 @@ const ItemDetailContainer = () => {
     return (
         <>
             {ListItem.length < 0  ? <ItemDetails producto={ListItem}/> : <p>Cargando...</p> }
+            <div className="row p-3 justify-content-around bg-danger">   
+
             <ItemDetails producto={ListItem}/>
+            </div>
 
         </>
     )

@@ -16,10 +16,10 @@ const ItemDetails = ({producto}) => {
   }
   return (
       <>
-              <div className="card col-4 m-auto">
+              <div className="card col-4 m-auto text-center">
                   <h2 className="tituloProducto">{producto.Nombre}</h2>
                   <img src={producto.Imagen} className="card-img-top"  alt="..."/>
-                  <p> Precio: ${producto.Valor}</p>
+                  <p className="font-weight-bold"> Precio: ${producto.Valor}</p>
                   <hr></hr>
                   <p>Descripcion: {producto.Modelo}</p>
                   {cantidadCarrito === undefined ? <ItemCount onEvent={contador} cantidad={producto.stock} inicial={1}/>: <Botones/>}

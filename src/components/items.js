@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 
 
 const Items = ({producto}) => {
-    console.log(producto);
     return (
             <div id={producto.id} className="m-1 card col-2">
                 <h5 className="card-title text-center">{producto.Nombre}</h5>

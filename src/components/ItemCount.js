@@ -26,7 +26,7 @@ const [contador, setContador] = useState(inicial)
                 <p>Cantidad: {contador}</p>
                 <button onClick={aumentarContador}>+</button>
             </div>
-            <button onClick={() =>onEvent(contador)}>Agregar</button>
+            <button className="m-1" onClick={() =>onEvent(contador)}>Agregar</button>
         </>
     )
 }
