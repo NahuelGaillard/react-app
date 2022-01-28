@@ -9,8 +9,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 
-
-
 const App = () => { 
     
   const saludo = "Bienvenido"

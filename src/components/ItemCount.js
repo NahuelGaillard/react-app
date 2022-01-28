@@ -1,8 +1,6 @@
 import { useState } from "react"
 
-
 const ItemCount = ({onEvent, cantidad, inicial}) => {
- 
     
 const [contador, setContador] = useState(inicial)
 

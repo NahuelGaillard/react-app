@@ -10,9 +10,8 @@ import { toast } from 'react-toastify';
 
 const Cart = () => {
 
-    const {vaciarCarrito, cantidad, carrito, eliminarProducto} = useContext(context)
+    const {vaciarCarrito, carrito, eliminarProducto} = useContext(context)
     const precioTotal = carrito.reduce((acc, prod) => acc += prod.Valor * prod.cantidad, 0)
-
 
 
     const[loading, setLoading] = useState(false)
@@ -28,7 +27,7 @@ const Cart = () => {
         const validNombre = validator.isAlpha(nombre)
         const validEmail = validator.isEmail(email)
         const ValidNumber = validator.isNumeric(telefono)
-        if (validNombre, validEmail, ValidNumber) {
+        if (validNombre & validEmail & ValidNumber) {
             setLoading(true)
                 const orden = {
                 productos: carrito,
@@ -47,7 +46,7 @@ const Cart = () => {
                 toast.success("Compra realizada con exito!")
 
         }else{
-            const msj = "Ingrese un Nombre valido"
+            const msj = "Ingrese un Valor valido"
             setError(msj)
             toast.error(msj)
         }
@@ -74,7 +73,7 @@ const handleChangeTelefono = (e) => {
         <div className="containerModal">
             <div className="modalCarrito">
                 <h3>Carrito</h3>
-                <Link to="./" id="carritoCerrar"><i className="fas fa-times-circle"></i></Link>
+                <Link to="/" id="carritoCerrar"><i className="fas fa-times-circle"></i></Link>
 
                 {carrito.length > 0 ? <div>{carrito.map((ItemCarrito) =>{
                         
@@ -86,8 +85,16 @@ const handleChangeTelefono = (e) => {
                                 <p>Cantidad: {ItemCarrito.cantidad}</p>
                                 <button onClick={() => eliminarProducto(ItemCarrito.id)} className="botonEliminar"><i className="fas fa-trash"></i></button>
                             </div>  
-                            <h3 className='text-center'>Ingrese sus datos.</h3>
-                                <div className='col-12'>
+                        </>
+
+                        )
+                    })}</div> : <Link className='d-block text-center' to="/">Empezar a comprar</Link> }
+                        {loading && <p>Cargando... </p>}
+                        {id && <p>Se guardo la compra con id {id} </p>}
+                    {carrito.length > 0 ? 
+                    <>
+                    <h3 className='text-center'>Ingrese sus datos.</h3>
+                            <div className='col-12'>
                                 <label className='col-3'>Nombre:</label>
                                 <input className='col-8' type="text" onChange={handleChangeNombre} value={nombre}/>
                                 <label className='col-3'>Email:</label>
@@ -96,14 +103,10 @@ const handleChangeTelefono = (e) => {
                                 <input className='col-8' type="number" onChange={handleChangeTelefono} value={telefono}/>
                             </div>
                             <p className="precioProducto">Precio total: $ {precioTotal}</p>
-                            <button className="miBoton w-100" onClick={guardarCompra}>Finalizar compra<i className= "fas fa-shopping-basket"></i></button>
-                        </>
+                            <button className="miBoton w-100" onClick={vaciarCarrito}>Vaciar Carrito</button>
 
-                        )
-                    })}</div> : <Link to="/">Empezar a comprar</Link> }
-                        {loading && <p>Cargando... </p>}
-                        {id && <p>Se guardo la compra con id {id} </p>}
-                        
+                            <button className="miBoton w-100" onClick={guardarCompra}>Finalizar compra<i className= "fas fa-shopping-basket"></i></button>
+                    </>   : <></> }
                         
             </div>
         </div>

@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import { useEffect } from "react/cjs/react.development";
 
 
 
@@ -11,7 +12,7 @@ const CustomProvider = ({children}) => {
 
         const [carrito, setCarrito] = useState([])
         const [cantidad, setCantidad]= useState(0)
-     
+        const [producto, setProducto] = useState([]) 
 
         const agregarProducto = (producto, cantidad) => {
            const enCarrito = isInCart(producto.id)
@@ -29,21 +30,18 @@ const CustomProvider = ({children}) => {
             }
 
         }
-
         
-        const eliminarProducto = (id) => {
-
-            const producto = carrito.find((prod) => prod.id === id)
-    
-                producto.cantidad--
-                if (producto.cantidad === 0) {
-                    const index = carrito.indexOf(producto)
-                    carrito.splice(index, 1)
-                }
-
-   
+        const eliminarProducto = (itemId) => {
+            const producto = carrito.find((prod) => prod.id === itemId)
+            
+            producto.cantidad--
+             if (producto.cantidad === 0) {
+                const index = carrito.indexOf(producto)
+                carrito.splice(index, 1)
+            }
 
         }
+
         const vaciarCarrito = (id) => {
             setCarrito([])
             setCantidad(0)

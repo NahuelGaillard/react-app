@@ -17,24 +17,30 @@ const ItemDetailContainer = () => {
         setListItem({ ...documento.data(), id: documento.id})
 }
 
-
     useEffect(() => {
        setTimeout(() => {
         getItem()
            
-       }, 200);
+       }, 20);
     }, []);
 
-    return (
-        <>
-            {ListItem.length < 0  ? <ItemDetails producto={ListItem}/> : <p>Cargando...</p> }
-            <div className="row p-3 justify-content-around bg-danger">   
 
+if (ListItem.length === 0) {
+    return(
+    <p>Cargando...</p>
+    )
+}else{
+     return (
+        <>
+            <div className="row p-3 justify-content-around bg-danger">   
             <ItemDetails producto={ListItem}/>
             </div>
 
         </>
     )
+}
+
+   
 }
 
 export default ItemDetailContainer;

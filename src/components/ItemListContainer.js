@@ -18,7 +18,6 @@ const formatearYSetear = (arrayDeDocumentos => {
 })
 
 
-
     const traerProductos = async () =>  {
         const productosCollection = collection(db,"Productos")
         const consulta = await getDocs(productosCollection)
@@ -47,7 +46,7 @@ const formatearYSetear = (arrayDeDocumentos => {
 
                 traerProductos()
         }
-    }, 200)
+    }, 20)
     
     }, [id]);
         return(
